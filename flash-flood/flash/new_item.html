@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="stylesheet" href="/flash/assets/css/new.css" />
+    <title>Food Menu Design</title>
+    
+  </head>
+  <body>
+    
+    <div id="main">
+        <a href="/flash/index.html" class="btn2">Home</a>
+      <div class="menu">
+        
+        <div class="menu-container">
+            
+          <img src="/flash/assets/images/pizza.png" alt="" />
+          <div class="content">
+            <h4><a href="#">Pizza</a></h4>
+            <p>Lorem Ipsum dolor sit amet consectetur adpiscing.</p>
+            <h5>₹55.00</h5>
+            <a
+              onclick="addItem('Pizza', 55)"
+              class="btn"
+              href="#"
+              >Add</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="menu">
+        <div class="menu-container">
+          <img src="/flash/assets/images/dosa1.jpg" alt="" />
+          <div class="content">
+            <h4><a href="#">Dosa</a></h4>
+            <p>Lorem Ipsum dolor sit amet consectetur adpiscing.</p>
+            <h5>55.00</h5>
+            <a
+              onclick="addItem('Dosa', 55)"
+              class="btn"
+              href="#"
+              >Add</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="menu">
+        <div class="menu-container">
+          <img src="/flash/assets/images/bur.png" alt="" />
+          <div class="content">
+            <h4><a href="#">BURGUR</a></h4>
+            <p>Lorem Ipsum dolor sit amet consectetur adpiscing.</p>
+            <h5>₹56.00</h5>
+            <a
+              onclick="addItem('Burger', 56)"
+              class="btn"
+              href="#"
+              >Add</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="menu">
+        <div class="menu-container">
+          <img src="/flash/assets/images/idl.jpg" alt="" />
+          <div class="content">
+            <h4><a href="#">ideli</a></h4>
+            <p>Lorem Ipsum dolor sit amet consectetur adpiscing.</p>
+            <h5>₹35.00</h5>
+            <a
+              onclick="addItem('ideli', 35)"
+              class="btn"
+              href="#"
+              >Add</a
+            >
+          </div>
+
+          
+        </div>
+        <h2>Items</h2>
+          <ul id="item-list"></ul>
+          <p class="total">Total Amount: ₹<span id="total-amount">0</span></p>
+          <p class="total">Number of Items: <span id="item-count">0</span></p>
+          <button class="clear-button btn1" onclick="clearAll()">
+            Book Here
+          </button>
+          
+          
+      </div>
+    </div>
+
+    <script>
+        // JavaScript code
+        var totalAmount = 0;
+        var itemCount = 0;
+    
+        function addItem(itemName, imgSrc, price) {
+          totalAmount += price;
+          itemCount++;
+    
+          var itemList = document.getElementById("item-list");
+          var listItem = document.createElement("li");
+          listItem.className = "item";
+          
+          var itemImage = document.createElement('a');
+          itemImage.src = imgSrc;
+          itemImage.alt = itemName;
+          
+          var itemNameSpan = document.createElement("span");
+          itemNameSpan.textContent = itemName;
+          
+          listItem.appendChild(itemImage);
+          listItem.appendChild(itemNameSpan);
+          
+          itemList.appendChild(listItem);
+    
+          updateTotal();
+        }
+        function clearAll() {
+          totalAmount = 0;
+          itemCount = 0;
+          document.getElementById("item-list").innerHTML = "";
+          updateTotal();
+          alert("Item Booked")
+        }
+    
+        function updateTotal() {
+          document.getElementById("total-amount").textContent = totalAmount;
+          document.getElementById("item-count").textContent = itemCount;
+        }
+      </script>
+  </body>
+</html>
